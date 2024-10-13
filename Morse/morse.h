@@ -146,6 +146,116 @@ String getMorse(){
   }
   return temp;
 }
+String getMorseCode(char chr){
+  switch(chr){
+    case 'A':{
+      char out[] = {0x7,'-','\0'};
+      return (String)out;
+    }
+    case 'B':{
+      char out[] = {'-',0x7,0x7,0x7,'\0'};
+      return (String)out;
+    }
+    case 'C':{
+      char out[] = {'-',0x7,'-',0x7,'\0'};
+      return (String)out;
+    }
+    case 'D':{
+      char out[] = {'-',0x7,0x7,'\0'};
+      return (String)out;
+    }
+    case 'E':{
+      char out[] = {0x7,'\0'};
+      return (String)out;
+    }
+    case 'F':{
+      char out[] = {0x7,0x7,'-',0x7,'\0'};
+      return (String)out;
+    }
+    case 'G':{
+      char out[] = {'-','-',0x7,'\0'};
+      return (String)out;
+    }
+    case 'H':{
+      char out[] = {0x7,0x7,0x7,0x7,'\0'};
+      return (String)out;
+    }
+    case 'I':{
+      char out[] = {0x7,0x7,'\0'};
+      return (String)out;
+    }
+    case 'J':{
+      char out[] = {0x7,'-','-','-','\0'};
+      return (String)out;
+    }
+    case 'K':{
+      char out[] = {'-',0x7,'-','\0'};
+      return (String)out;
+    }
+    case 'L':{
+      char out[] = {0x7,'-',0x7,0x7,'\0'};
+      return (String)out;
+    }
+    case 'M':{
+      char out[] = {'-','-','\0'};
+      return (String)out;
+    }
+    case 'N':{
+      char out[] = {'-',0x7,'\0'};
+      return (String)out;
+    }
+    case 'O':{
+      char out[] = {'-','-','-','\0'};
+      return (String)out;
+    }
+    case 'P':{
+      char out[] = {0x7,'-','-',0x7,'\0'};
+      return (String)out;
+    }
+    case 'Q':{
+      char out[] = {'-','-',0x7,'-','\0'};
+      return (String)out;
+    }
+    case 'R':{
+      char out[] = {0x7,'-',0x7,'\0'};
+      return (String)out;
+    }
+    case 'S':{
+      char out[] = {0x7,0x7,0x7,'\0'};
+      return (String)out;
+    }
+    case 'T':{
+      char out[] = {'-','\0'};
+      return (String)out;
+    }
+    case 'U':{
+      char out[] = {0x7,0x7,'-','\0'};
+      return (String)out;
+    }
+    case 'V':{
+      char out[] = {0x7,0x7,0x7,'-','\0'};
+      return (String)out;
+    }
+    case 'W':{
+      char out[] = {0x7,'-','-','\0'};
+      return (String)out;
+    }
+    case 'X':{
+      char out[] = {'-',0x7,0x7,'-','\0'};
+      return (String)out;
+    }
+    case 'Y':{
+      char out[] = {'-',0x7,'-','-','\0'};
+      return (String)out;
+    }
+    case 'Z':{
+      char out[] = {'-','-',0x7,0x7,'\0'};
+      return (String)out;
+    }
+    default:
+      return "";
+  }
+}
 
 char translateInput(bool is_right = true){
   static unsigned long start = millis();

@@ -73,7 +73,83 @@ void play(){
 
 // Flashcards
 void flashcards(){
-  return;
+  // Setup
+  static int instr = true;
+  static int instr_tmr = millis();
+  static char leftans = 0;
+  static char rightans = 0;
+  static String solution = "";
+  static unsigned int score = 0;
+  if(modeOS){
+    randomSeed(millis());
+    instr_tmr = millis();
+    modeOS = 0;
+    instr = true;
+    solution = "";
+  }
+  if(instr && (inputStateR || inputStateL || millis()>(instr_tmr+1500))){
+    instr = false;
+  }
+  
+  // Make new question
+  if(solution.equals("")){
+    leftans = (char)random(65,91);
+    rightans = (char)random(65,91);
+    while(rightans == leftans){
+      rightans = (char)random(65,91);
+    }
+
+    if(random(0,2)){
+      solution = getMorseCode(leftans);
+    } else {
+      solution = getMorseCode(rightans);
+    }
+  }
+
+
+  // Input
+  if(inputOSL||inputOSR){
+    int check = 0;
+    if(inputOSL){
+      if (getMorseCode(leftans).equals(solution)){
+        check = 1;
+      }
+    }else{
+      if (getMorseCode(rightans).equals(solution)){
+        check = 1;
+      }
+    }
+    if(check){
+      buzz.happy_tone();
+      score++;
+    }else{
+      buzz.sad_tone();
+      score--;
+    }
+    solution = "";
+  }
+
+
+  // Output
+  display.drawRect(5, 10, 14, 20, SSD1306_WHITE);
+  display.drawRect(display.width()-16, 10, 14, 20, SSD1306_WHITE);
+  display.setTextSize(2);
+  display.setCursor(7, 13);
+  display.print(leftans);
+  display.setCursor(display.width()-14, 13);
+  display.print(rightans);
+  display.setCursor(64-(solution.length()*6), 0);
+  display.print(solution);
+
+  display.setTextSize(1);
+  display.setCursor(0, 0);
+  display.print(score);
+  if(instr){
+    display.setTextSize(1);
+    display.setCursor(0, 24);
+    display.fillRect(0, 23, 128, 8, SSD1306_BLACK);
+    display.print(F("Left            Right"));
+  }
 }
 
 // Quiz
@@ -88,7 +164,6 @@ void quiz(){
     modeOS = 0;
     static char question = 0;
     instr = true;
-    score = 0;
   }
   if(inputStateR || inputStateL){
     instr = false;
