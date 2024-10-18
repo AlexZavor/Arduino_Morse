@@ -20,7 +20,7 @@ Buzzer buzz(OUTPUT_BUZZ_PIN);
 void option(){
   display.setCursor(0, 0);
   display.setTextSize(1);
-  display.print(F("What Options do you expect?\nThis is a tiny app"));
+  display.print(F("What Options do you  expect?\nThis is a tiny app!"));
 }
 
 // Play

@@ -6,8 +6,8 @@
 #include <Adafruit_SSD1306.h>
 
 // Button Inputs
-#define INPUT_BUTTON_L 2
-#define INPUT_BUTTON_R 3
+#define INPUT_BUTTON_L 3
+#define INPUT_BUTTON_R 2
 // Led/Speaker output
 #define OUTPUT_BUZZ_PIN 4
 #define OUTPUT_LED_PIN 5
